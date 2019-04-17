@@ -2,7 +2,6 @@ package com.qinlei.dagger_android_demo.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,11 +11,11 @@ import com.qinlei.dagger_android_demo.second.SecondActivity;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import dagger.android.AndroidInjection;
+import dagger.android.support.DaggerAppCompatActivity;
 
 //如果使用到了 Fragment 才需要使用 DaggerAppCompatActivity
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends DaggerAppCompatActivity {
 
     @Inject
     @Named("first")
@@ -37,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        AndroidInjection.inject(this);// 非继承 DaggerAppCompatActivity 需要调用
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView textView = findViewById(R.id.tv_test);
